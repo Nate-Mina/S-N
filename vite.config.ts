@@ -5,8 +5,11 @@ import {defineConfig} from 'vite';
 
 export default defineConfig(() => {
   return {
-    // Relative base path ensures assets load correctly on GitHub Pages (e.g. https://username.github.io/repo-name/)
-    base: process.env.VITE_BASE_PATH || './',
+    // Base path configuration for GitHub Pages:
+    // 1. Explicit VITE_BASE_PATH if provided (e.g. from GitHub Actions configure-pages)
+    // 2. GITHUB_REPOSITORY (automatically provided in GitHub Actions as "owner/repo")
+    // 3. Fallback to './' for relative deployments
+    base: process.env.VITE_BASE_PATH || (process.env.GITHUB_REPOSITORY ? `/${process.env.GITHUB_REPOSITORY.split('/')[1]}/` : './'),
     plugins: [react(), tailwindcss()],
     resolve: {
       alias: {

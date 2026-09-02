@@ -1,8 +1,17 @@
 <!doctype html>
-<html lang="en" class="dark">
+<html lang="en" class="dark" style="background-color: #050508; color: #e7e5e4;">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script>
+      // Ensure trailing slash on GitHub Pages directory URLs so relative assets (./assets/...) resolve properly
+      (function() {
+        var path = window.location.pathname;
+        if (path && !path.endsWith('/') && !path.split('/').pop().includes('.')) {
+          window.location.replace(path + '/' + window.location.search + window.location.hash);
+        }
+      })();
+    </script>
     <title>Autopsy of a Romance: Nate & Sabrina Story</title>
     <meta name="description" content="A forensic case study and interactive timeline documenting the relationship between Nate and Sabrina, the cycle of abuse, and the path to psychological recovery." />
     <meta property="og:title" content="Autopsy of a Romance: Nate & Sabrina Story" />
@@ -11,9 +20,48 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=JetBrains+Mono:ital,wght@0,400;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   </head>
-  <body class="bg-[#050508] text-stone-200 antialiased selection:bg-emerald-500/30 selection:text-emerald-300">
-    <div id="root"></div>
+  <body style="background-color: #050508; color: #e7e5e4; margin: 0; min-height: 100vh;" class="bg-[#050508] text-stone-200 antialiased selection:bg-emerald-500/30 selection:text-emerald-300">
+    <div id="root">
+      <!-- Fast-rendering initial skeleton placeholder replaced as soon as React mounts -->
+      <div id="initial-loading-container" style="display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; background-color: #050508; color: #e7e5e4; font-family: system-ui, -apple-system, sans-serif; text-align: center; padding: 24px; box-sizing: border-box;">
+        <div style="width: 44px; height: 44px; border: 3px solid rgba(244, 63, 94, 0.2); border-top-color: #f43f5e; border-radius: 50%; animation: initial-spin 0.9s linear infinite; margin-bottom: 20px;"></div>
+        <h2 style="font-family: Georgia, serif; font-size: 24px; font-weight: 700; margin: 0 0 8px 0; color: #f5f5f4; letter-spacing: -0.02em;">Autopsy of a Romance</h2>
+        <p style="font-size: 14px; color: #78716c; margin: 0 0 20px 0; font-family: monospace;">Loading forensic archive...</p>
+        
+        <!-- Diagnostic panel shown only if scripts fail to compile or load on GitHub Pages -->
+        <div id="deployment-diagnostic" style="display: none; max-width: 500px; text-align: left; background: #0e111a; border: 1px solid rgba(244, 63, 94, 0.4); border-radius: 16px; padding: 20px; font-size: 13px; color: #d6d3d1; margin-top: 16px; line-height: 1.6;">
+          <strong style="color: #fda4af; display: block; margin-bottom: 6px; font-size: 14px;">⚠️ GitHub Pages Configuration Notice:</strong>
+          This application requires a built production bundle. If this screen stays visible on GitHub Pages:
+          <ol style="margin: 8px 0 0 0; padding-left: 20px; color: #a8a29e;">
+            <li>Go to your repository on GitHub.</li>
+            <li>Click <strong>Settings</strong> &rarr; <strong>Pages</strong>.</li>
+            <li>Under <strong>Build and deployment &gt; Source</strong>, choose <strong>GitHub Actions</strong> (recommended) so the included workflow builds and publishes automatically.</li>
+            <li>Alternatively, run <code style="background: #1c1917; padding: 2px 6px; border-radius: 4px; color: #f43f5e;">npm run deploy</code> to push the compiled <code style="background: #1c1917; padding: 2px 6px; border-radius: 4px; color: #f43f5e;">dist/</code> build to the <code style="background: #1c1917; padding: 2px 6px; border-radius: 4px; color: #f43f5e;">gh-pages</code> branch.</li>
+          </ol>
+        </div>
+
+        <style>
+          @keyframes initial-spin { to { transform: rotate(360deg); } }
+        </style>
+      </div>
+    </div>
+
+    <script>
+      // Check if unbuilt source is being served directly by GitHub Pages
+      window.addEventListener('DOMContentLoaded', function() {
+        setTimeout(function() {
+          var container = document.getElementById('initial-loading-container');
+          if (container && window.location.hostname.indexOf('github.io') !== -1) {
+            var diag = document.getElementById('deployment-diagnostic');
+            if (diag) {
+              diag.style.display = 'block';
+            }
+          }
+        }, 3000);
+      });
+    </script>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
+
 
