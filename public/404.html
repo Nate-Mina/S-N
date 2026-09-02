@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Autopsy of a Romance: Nate & Sabrina Case Study</title>
+    <script>
+      // Single Page App fallback for GitHub Pages
+      // Redirect any deep links or unknown paths to root with hash preserved
+      (function() {
+        var path = window.location.pathname;
+        var hash = window.location.hash;
+        var search = window.location.search;
+        
+        // Find the last segment if it represents a tab or section
+        var segments = path.split('/').filter(Boolean);
+        var last = segments.length > 0 ? segments[segments.length - 1] : '';
+        
+        var validTabs = ['timeline', 'case-study', 'song-lab', 'letters-vault', 'diagnostic', 'healing'];
+        var targetHash = hash;
+        if (!targetHash && validTabs.indexOf(last) !== -1) {
+          targetHash = '#' + last;
+        }
+        
+        window.location.replace('./' + (search ? search : '') + targetHash);
+      })();
+    </script>
+  </head>
+  <body style="background-color: #050508; color: #a8a29e; font-family: sans-serif; display: flex; align-items: center; justify-content: center; height: 100vh; margin: 0;">
+    <p>Redirecting to Autopsy of a Romance archive...</p>
+  </body>
+</html>

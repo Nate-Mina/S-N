@@ -1,0 +1,6 @@
+{
+  "name": "Autopsy of a Romance: Nate & Sabrina Story",
+  "description": "A forensic case study and interactive timeline documenting the relationship between Nate and Sabrina, the cycle of abuse, and the path to psychological recovery.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
